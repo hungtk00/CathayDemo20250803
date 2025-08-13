@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -48,7 +49,8 @@ public class CoinDeskServiceIntegrationTest {
                 currencyEntity.setRate("10.0123");
                 currencyEntity.setRate_float(10.0123);
                 currencyEntity.setDescription(currencyDTO.getDescription() + " new");
-                currencyEntity.setUpdatedISO(new Date());
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                currencyEntity.setUpdatedISO(coinDeskService.convertToFormattedDateString(sdf.format(new Date())));
                 currencyService.save(currencyEntity);
             });
         }
@@ -68,7 +70,8 @@ public class CoinDeskServiceIntegrationTest {
         currencyEntity.setRate("57,756.298");
         currencyEntity.setDescription("Japan Dollar");
         currencyEntity.setRate_float(57756.2984);
-        currencyEntity.setUpdatedISO(new Date());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        currencyEntity.setUpdatedISO(coinDeskService.convertToFormattedDateString(sdf.format(new Date())));
         try {
             currencyService.save(currencyEntity);
         }catch (Exception e){
@@ -84,7 +87,8 @@ public class CoinDeskServiceIntegrationTest {
         currencyEntity.setRate("57,756.298");
         currencyEntity.setDescription("Japan Dollar");
         currencyEntity.setRate_float(57756.2984);
-        currencyEntity.setUpdatedISO(new Date());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        currencyEntity.setUpdatedISO(coinDeskService.convertToFormattedDateString(sdf.format(new Date())));
         currencyService.save(currencyEntity);
         System.out.println("save data="+currencyEntity);
     }

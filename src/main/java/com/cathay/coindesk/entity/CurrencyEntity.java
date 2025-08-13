@@ -1,6 +1,8 @@
 package com.cathay.coindesk.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +24,7 @@ public class CurrencyEntity {
     private String rate;
     private String description;
     private double rate_float;
-    private Date updatedISO;
+    private String updatedISO;
 
     public String getCode() {
         return code;
@@ -64,11 +66,11 @@ public class CurrencyEntity {
         this.id = id;
     }
 
-    public Date getUpdatedISO() {
+    public String getUpdatedISO() {
         return updatedISO;
     }
 
-    public void setUpdatedISO(Date updatedISO) {
+    public void setUpdatedISO(String updatedISO) {
         this.updatedISO = updatedISO;
     }
 
